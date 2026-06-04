@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Helia — Accompagnement & coaching personnel</title>
+    <meta name="description" content="Séances individuelles de coaching et accompagnement. Retrouver sa clarté, son équilibre, son élan. À Paris et en visio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --paper: #f5f1ea;
+            --paper-soft: #ebe5db;
+            --sage: #8a9a87;
+            --sage-deep: #5e6b5c;
+            --ocre: #c89860;
+            --ink: #2d2d2a;
+            --muted: #7a7773;
+            --serif: 'DM Serif Display', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+        ::selection { background: var(--sage); color: var(--paper); }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 28px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 241, 234, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+        nav .logo {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: var(--ink);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+        nav ul { list-style: none; display: flex; gap: 40px; }
+        nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--sage-deep); }
+        nav .cta {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 12px 24px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+        }
+        nav .cta:hover { background: var(--sage-deep); color: var(--paper); }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(138, 154, 135, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+        .hero-eyebrow {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--sage-deep);
+            font-size: 1.1rem;
+            margin-bottom: 36px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 50px;
+            height: 1px;
+            background: var(--sage);
+        }
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 7vw, 6rem);
+            font-weight: 400;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+            margin-bottom: 36px;
+            color: var(--ink);
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--sage-deep);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 540px;
+            margin-bottom: 48px;
+            line-height: 1.65;
+        }
+        .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-family: var(--sans);
+        }
+        .btn-primary { background: var(--ink); color: var(--paper); }
+        .btn-primary:hover { background: var(--sage-deep); transform: translateY(-2px); }
+        .btn-ghost {
+            background: transparent;
+            color: var(--ink);
+            border: 1px solid var(--ink);
+        }
+        .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+        section { padding: 130px 0; }
+
+        .approche {
+            background: var(--paper-soft);
+            border-top: 1px solid rgba(45, 45, 42, 0.08);
+            border-bottom: 1px solid rgba(45, 45, 42, 0.08);
+        }
+        .approche-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 100px;
+            align-items: center;
+        }
+        .approche-visual {
+            aspect-ratio: 3/4;
+            background: linear-gradient(160deg, #b4c0b0 0%, #5e6b5c 80%);
+            border-radius: 200px 200px 8px 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        .approche-visual::before {
+            content: '';
+            position: absolute;
+            inset: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(245, 241, 234, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .approche-text .eyebrow {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--sage-deep);
+            font-size: 1.05rem;
+            margin-bottom: 18px;
+        }
+        .approche-text h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            color: var(--ink);
+        }
+        .approche-text h2 em { font-style: italic; color: var(--sage-deep); }
+        .approche-text p {
+            font-size: 1.1rem;
+            color: var(--ink);
+            margin-bottom: 22px;
+            max-width: 540px;
+        }
+        .approche-text p.lead {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--sage-deep);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .seances {
+            text-align: center;
+        }
+        .seances .section-eyebrow {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--sage-deep);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .seances h2 {
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 60px;
+            color: var(--ink);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .seances h2 em { font-style: italic; color: var(--ocre); }
+
+        .seances-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            text-align: left;
+        }
+        .seance-card {
+            padding: 48px 36px;
+            background: var(--paper-soft);
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+            position: relative;
+        }
+        .seance-card:hover {
+            border-color: var(--sage);
+            transform: translateY(-4px);
+        }
+        .seance-num {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--ocre);
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+        .seance-card h3 {
+            font-family: var(--serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+        .seance-card p {
+            color: var(--muted);
+            margin-bottom: 24px;
+            font-size: 0.98rem;
+        }
+        .seance-meta {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            border-top: 1px solid rgba(45, 45, 42, 0.1);
+            font-size: 0.9rem;
+        }
+        .seance-meta .duree { color: var(--muted); }
+        .seance-meta .prix {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--sage-deep);
+            font-size: 1.1rem;
+        }
+
+        .citation {
+            background: var(--ink);
+            color: var(--paper);
+            text-align: center;
+            padding: 140px 0;
+        }
+        .citation blockquote {
+            font-family: var(--serif);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-style: italic;
+            line-height: 1.4;
+            max-width: 850px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+        .citation blockquote::before { content: '"'; color: var(--ocre); font-size: 4rem; line-height: 0.5; display: block; margin-bottom: 20px; }
+        .citation cite {
+            font-style: normal;
+            font-size: 0.95rem;
+            color: rgba(245, 241, 234, 0.6);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .contact-section {
+            background: var(--paper);
+            text-align: center;
+            padding: 130px 32px;
+        }
+        .contact-section .eyebrow {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--sage-deep);
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+        .contact-section h2 {
+            font-family: var(--serif);
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 28px;
+            color: var(--ink);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-section h2 em { font-style: italic; color: var(--ocre); }
+        .contact-section p {
+            font-size: 1.15rem;
+            color: var(--muted);
+            max-width: 560px;
+            margin: 0 auto 48px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(45, 45, 42, 0.1);
+            padding: 50px 0 40px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        footer .logo {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            color: var(--ink);
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        footer .info { margin-bottom: 24px; }
+        footer .copy { font-size: 0.82rem; opacity: 0.7; }
+
+        @media (max-width: 880px) {
+            .container { padding: 0 22px; }
+            nav { padding: 18px 22px; }
+            nav ul { display: none; }
+            .hero { padding: 110px 0 60px; min-height: auto; }
+            section { padding: 80px 0; }
+            .approche-grid { grid-template-columns: 1fr; gap: 50px; }
+            .approche-visual { aspect-ratio: 4/5; max-width: 340px; margin: 0 auto; }
+            .seances-grid { grid-template-columns: 1fr; }
+            .citation { padding: 90px 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Studio Helia</a>
+        <ul>
+            <li><a href="#approche">Mon approche</a></li>
+            <li><a href="#seances">Séances</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta">Réserver</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-eyebrow">Coaching & accompagnement personnel</div>
+                <h1>Retrouver son <em>élan</em>, à son propre <em>rythme</em>.</h1>
+                <p>Séances individuelles à Paris et en visio, pour faire le point, lever ce qui freine, et avancer avec clarté.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Réserver un premier échange</a>
+                    <a href="#approche" class="btn btn-ghost">Découvrir ma méthode</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="approche" id="approche">
+        <div class="container">
+            <div class="approche-grid">
+                <div class="approche-visual"></div>
+                <div class="approche-text">
+                    <div class="eyebrow">— Mon approche</div>
+                    <h2>Une écoute <em>juste</em>, sans jugement, sans pression.</h2>
+                    <p class="lead">Le coaching ne consiste pas à vous dire quoi faire — mais à créer les conditions pour que vous trouviez, par vous-même, ce qui vous correspond.</p>
+                    <p>Je vous accompagne dans les moments charnières : transition professionnelle, perte de sens, fatigue, choix de vie. Ensemble, nous démêlons ce qui pèse et ce qui appelle.</p>
+                    <p>Chaque séance est unique. Pas de méthode toute faite, pas de recette miracle. Juste un espace pour penser, ressentir, décider.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seances" id="seances">
+        <div class="container">
+            <div class="section-eyebrow">— Séances</div>
+            <h2>Trois formats, <em>une même intention</em>.</h2>
+
+            <div class="seances-grid">
+                <article class="seance-card">
+                    <div class="seance-num">01</div>
+                    <h3>Premier échange</h3>
+                    <p>Un appel offert pour faire connaissance, comprendre votre demande et voir si la collaboration vous convient. Sans engagement.</p>
+                    <div class="seance-meta">
+                        <span class="duree">30 minutes · Visio</span>
+                        <span class="prix">Offert</span>
+                    </div>
+                </article>
+
+                <article class="seance-card">
+                    <div class="seance-num">02</div>
+                    <h3>Séance individuelle</h3>
+                    <p>Un temps pour vous, pour explorer ce qui vous habite, identifier vos blocages, ouvrir des pistes concrètes.</p>
+                    <div class="seance-meta">
+                        <span class="duree">1h15 · Paris ou visio</span>
+                        <span class="prix">90 €</span>
+                    </div>
+                </article>
+
+                <article class="seance-card">
+                    <div class="seance-num">03</div>
+                    <h3>Parcours 6 séances</h3>
+                    <p>Un accompagnement sur 3 mois pour un travail en profondeur, avec suivi entre les séances et bilan final.</p>
+                    <div class="seance-meta">
+                        <span class="duree">6 séances · 3 mois</span>
+                        <span class="prix">480 €</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="citation">
+        <div class="container">
+            <blockquote>Ce n'est pas le chemin qui est difficile, c'est le difficile qui est le chemin.</blockquote>
+            <cite>— Søren Kierkegaard</cite>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="eyebrow">— Premier échange</div>
+        <h2>Et si on prenait <em>30 minutes</em> pour en parler&nbsp;?</h2>
+        <p>Le premier appel est offert. Sans engagement, sans pression. Juste un moment pour voir si nous pouvons travailler ensemble.</p>
+        <div class="hero-actions" style="justify-content: center;">
+            <a href="mailto:contact@studio-helia.fr" class="btn btn-primary">Écrire un message</a>
+            <a href="#" class="btn btn-ghost">Voir mes disponibilités</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">Studio Helia</div>
+            <div class="info">contact@studio-helia.fr · Paris 11<sup>e</sup></div>
+            <div class="copy">© 2026 Studio Helia — Site conçu par Mattéo</div>
+        </div>
+    </footer>
+</body>
+</html>
