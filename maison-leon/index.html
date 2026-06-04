@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Léon — Boulangerie artisanale depuis 1948</title>
+    <meta name="description" content="Pain au levain naturel, viennoiseries pur beurre, pâtisseries maison. Boulangerie artisanale au cœur du village depuis trois générations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --cream: #fdf6e9;
+            --wheat: #e9d9b8;
+            --crust: #8b4513;
+            --crust-dark: #5c2c0a;
+            --brick: #b73e2c;
+            --brick-dark: #7a2818;
+            --ink: #2a1810;
+            --muted: #6b5544;
+            --serif: 'Playfair Display', serif;
+            --sans: 'Lato', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--sans);
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        ::selection { background: var(--brick); color: var(--cream); }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 22px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(253, 246, 233, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+        nav .logo {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--brick-dark);
+            text-decoration: none;
+        }
+        nav ul { list-style: none; display: flex; gap: 36px; }
+        nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--brick); }
+        nav .phone {
+            background: var(--brick-dark);
+            color: var(--cream);
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        nav .phone:hover { background: var(--brick); color: var(--cream); }
+
+        .hero {
+            padding: 140px 0 100px;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--wheat) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '🌾';
+            position: absolute;
+            top: 30%;
+            right: -50px;
+            font-size: 22rem;
+            opacity: 0.04;
+            transform: rotate(-15deg);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(183, 62, 44, 0.1);
+            color: var(--brick-dark);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 32px;
+            font-weight: 700;
+        }
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 6.5vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 28px;
+            color: var(--crust-dark);
+        }
+        .hero h1 em { font-style: italic; color: var(--brick-dark); }
+        .hero-lead {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.25s;
+            letter-spacing: 0.02em;
+        }
+        .btn-primary { background: var(--brick-dark); color: var(--cream); }
+        .btn-primary:hover { background: var(--brick); transform: translateY(-2px); }
+        .btn-ghost {
+            background: transparent;
+            color: var(--crust-dark);
+            border: 1px solid var(--crust-dark);
+        }
+        .btn-ghost:hover { background: var(--crust-dark); color: var(--cream); }
+
+        .hero-visual {
+            aspect-ratio: 4/5;
+            background: linear-gradient(135deg, #d4a574 0%, #8b4513 60%, #5c2c0a 100%);
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(92, 44, 10, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9rem;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-visual::after {
+            content: 'Pain de campagne au levain — fournée du matin';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        section { padding: 100px 0; }
+        .section-eyebrow {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--brick);
+            font-size: 1.1rem;
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--crust-dark);
+            margin-bottom: 24px;
+        }
+        .section-title em { font-style: italic; color: var(--brick-dark); }
+
+        .histoire {
+            background: var(--cream);
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+        }
+        .histoire-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .histoire-visual {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, #a0623d 0%, #5c2c0a 100%);
+            border-radius: 8px;
+            position: relative;
+        }
+        .histoire-visual::before {
+            content: '';
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(253, 246, 233, 0.3);
+            border-radius: 4px;
+        }
+        .histoire-visual::after {
+            content: '1948';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--serif);
+            font-size: 6rem;
+            color: rgba(253, 246, 233, 0.95);
+            font-style: italic;
+        }
+        .histoire-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+        .histoire-text p:first-of-type {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.4rem;
+            color: var(--crust-dark);
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        .specialites {
+            background: var(--crust-dark);
+            color: var(--cream);
+        }
+        .specialites .section-eyebrow { color: #e9b97c; }
+        .specialites .section-title { color: var(--cream); }
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+        .spec-card {
+            background: rgba(253, 246, 233, 0.05);
+            border: 1px solid rgba(253, 246, 233, 0.12);
+            border-radius: 8px;
+            padding: 40px 32px;
+            transition: all 0.3s;
+        }
+        .spec-card:hover {
+            background: rgba(253, 246, 233, 0.09);
+            transform: translateY(-4px);
+        }
+        .spec-icon {
+            font-size: 2.4rem;
+            margin-bottom: 24px;
+        }
+        .spec-card h3 {
+            font-family: var(--serif);
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+            color: var(--cream);
+        }
+        .spec-card p {
+            font-size: 0.95rem;
+            color: rgba(253, 246, 233, 0.7);
+            margin-bottom: 24px;
+        }
+        .spec-card ul { list-style: none; padding-top: 20px; border-top: 1px solid rgba(253, 246, 233, 0.12); }
+        .spec-card li {
+            padding: 6px 0;
+            font-size: 0.92rem;
+            color: rgba(253, 246, 233, 0.85);
+            display: flex;
+            justify-content: space-between;
+        }
+        .spec-card li span:last-child {
+            font-family: var(--serif);
+            font-style: italic;
+            color: #e9b97c;
+        }
+
+        .horaires {
+            background: var(--wheat);
+        }
+        .horaires-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .horaires-list {
+            background: var(--cream);
+            border-radius: 8px;
+            padding: 40px;
+            border: 1px solid rgba(139, 69, 19, 0.15);
+        }
+        .horaires-list h4 {
+            font-family: var(--serif);
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+            color: var(--crust-dark);
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.15);
+        }
+        .horaires-list dl { display: grid; grid-template-columns: auto 1fr; gap: 14px 24px; }
+        .horaires-list dt { font-weight: 700; color: var(--ink); }
+        .horaires-list dd { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+        .horaires-list dd.closed { color: var(--brick-dark); font-style: italic; }
+        .horaires-info p { font-size: 1.05rem; margin-bottom: 16px; color: var(--ink); }
+        .horaires-info .place {
+            font-family: var(--serif);
+            font-style: italic;
+            color: var(--crust-dark);
+            font-size: 1.3rem;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(139, 69, 19, 0.2);
+        }
+
+        footer {
+            background: var(--crust-dark);
+            color: rgba(253, 246, 233, 0.7);
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        footer .logo {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 12px;
+        }
+        footer p { margin-bottom: 8px; font-size: 0.95rem; }
+        footer .copy {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(253, 246, 233, 0.15);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 880px) {
+            .container { padding: 0 22px; }
+            nav { padding: 16px 22px; }
+            nav ul { display: none; }
+            .hero { padding: 120px 0 70px; }
+            .hero-grid, .histoire-grid, .horaires-grid { grid-template-columns: 1fr; gap: 50px; }
+            .hero-visual { aspect-ratio: 1/1; font-size: 6rem; }
+            .hero-visual::after { position: static; margin-top: 16px; display: block; }
+            section { padding: 70px 0; }
+            .spec-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Maison Léon</a>
+        <ul>
+            <li><a href="#histoire">Notre histoire</a></li>
+            <li><a href="#specialites">Spécialités</a></li>
+            <li><a href="#horaires">Nous trouver</a></li>
+        </ul>
+        <a href="tel:+33320000000" class="phone">03 20 00 00 00</a>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-eyebrow">Boulangerie artisanale · Depuis 1948</div>
+                    <h1>Le pain, comme on le faisait <em>autrefois</em>.</h1>
+                    <p class="hero-lead">Levain naturel, farines locales, fournée du matin. Trois générations de boulangers au service du bon pain et des belles viennoiseries.</p>
+                    <div class="hero-actions">
+                        <a href="#specialites" class="btn btn-primary">Voir nos spécialités</a>
+                        <a href="#horaires" class="btn btn-ghost">Horaires & adresse</a>
+                    </div>
+                </div>
+                <div class="hero-visual">🥖</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="histoire" id="histoire">
+        <div class="container">
+            <div class="histoire-grid">
+                <div class="histoire-visual"></div>
+                <div class="histoire-text">
+                    <div class="section-eyebrow">— Notre histoire</div>
+                    <h2 class="section-title">Trois générations<br>d'<em>artisans boulangers</em>.</h2>
+                    <p>Tout a commencé en 1948, quand mon grand-père a ouvert la porte de cette boulangerie au cœur du village.</p>
+                    <p>Aujourd'hui, nous travaillons les mêmes farines locales, le même levain naturel transmis de père en fils, et le même four à sole alimenté chaque matin avant l'aube.</p>
+                    <p>Le pain a évolué avec son temps — la rigueur et la patience, elles, n'ont pas changé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialites" id="specialites">
+        <div class="container">
+            <div class="section-eyebrow">— Nos spécialités</div>
+            <h2 class="section-title">La carte du jour,<br>chaque jour <em>renouvelée</em>.</h2>
+
+            <div class="spec-grid">
+                <article class="spec-card">
+                    <div class="spec-icon">🍞</div>
+                    <h3>Les pains</h3>
+                    <p>Pétris à la main, façonnés sur place, cuits au four à sole. Levain naturel de 24h minimum.</p>
+                    <ul>
+                        <li><span>Tradition française</span><span>1,40 €</span></li>
+                        <li><span>Pain de campagne</span><span>4,80 €</span></li>
+                        <li><span>Pain au levain 1kg</span><span>5,20 €</span></li>
+                        <li><span>Pain aux céréales</span><span>3,90 €</span></li>
+                    </ul>
+                </article>
+
+                <article class="spec-card">
+                    <div class="spec-icon">🥐</div>
+                    <h3>Les viennoiseries</h3>
+                    <p>Pâte feuilletée pur beurre AOP de Charentes-Poitou, tournée manuellement chaque nuit.</p>
+                    <ul>
+                        <li><span>Croissant pur beurre</span><span>1,50 €</span></li>
+                        <li><span>Pain au chocolat</span><span>1,70 €</span></li>
+                        <li><span>Brioche feuilletée</span><span>6,90 €</span></li>
+                        <li><span>Kouign-amann</span><span>3,20 €</span></li>
+                    </ul>
+                </article>
+
+                <article class="spec-card">
+                    <div class="spec-icon">🍰</div>
+                    <h3>Les pâtisseries</h3>
+                    <p>Créations de saison, fruits frais du marché, chocolat de couverture, crèmes maison.</p>
+                    <ul>
+                        <li><span>Tarte aux fruits</span><span>4,20 €</span></li>
+                        <li><span>Paris-Brest</span><span>4,80 €</span></li>
+                        <li><span>Éclair café/chocolat</span><span>3,80 €</span></li>
+                        <li><span>Gâteau sur commande</span><span>sur devis</span></li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="horaires" id="horaires">
+        <div class="container">
+            <div class="horaires-grid">
+                <div class="horaires-info">
+                    <div class="section-eyebrow">— Nous trouver</div>
+                    <h2 class="section-title">Une <em>adresse</em>,<br>une <em>famille</em>,<br>un quartier.</h2>
+                    <p>Nous sommes ouverts du mardi au dimanche. La fournée du matin commence à 4h, la première vente à 7h.</p>
+                    <p>Pour les commandes spéciales — gâteaux d'anniversaire, pièces montées, brioches du dimanche — pensez à passer 48h à l'avance.</p>
+                    <div class="place">
+                        12 rue de la Boulangerie<br>
+                        59000 Lille
+                    </div>
+                </div>
+                <div class="horaires-list">
+                    <h4>Horaires d'ouverture</h4>
+                    <dl>
+                        <dt>Lundi</dt><dd class="closed">Fermé</dd>
+                        <dt>Mardi — Vendredi</dt><dd>7h00 — 19h30</dd>
+                        <dt>Samedi</dt><dd>7h00 — 19h30</dd>
+                        <dt>Dimanche</dt><dd>7h00 — 13h00</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">Maison Léon</div>
+            <p>Boulangerie artisanale depuis 1948</p>
+            <p>03 20 00 00 00 · contact@maison-leon.fr</p>
+            <div class="copy">© 2026 Maison Léon — Site conçu par Mattéo</div>
+        </div>
+    </footer>
+</body>
+</html>
